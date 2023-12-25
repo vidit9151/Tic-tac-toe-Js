@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Tick tack toe</title>
+    <link rel="stylesheet" href="tick tac toe.css" />
+  </head>
+  <body>
+    <div class="msg-container hidden">
+      <button class="close-modal">&times;</button>
+      <p id="msg">Mr.O won the game</p>
+    </div>
+    <main>
+      <h1 class="rainbow">Tick tack toe</h1>
+      <div class="container">
+        <div class="game">
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+          <div><button class="box"></button></div>
+        </div>
+      </div>
+      <button id="reset-button">reset game</button>
+    </main>
+    <div class="overlay hidden"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="tick tac toe.js"></script>
+  </body>
+</html>
