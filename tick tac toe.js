@@ -5,10 +5,10 @@ let msgContainer = document.querySelector(".msg-container");
 let winning = new Audio(
     "/Javascript games/tic tac toe sounds/winner-trumpet-fanfare-soundroll-1-00-03.mp3"
   ),
-  clickO = new Audio("/Javascript games/tic tac toe sounds/click.mp3");
-clickX = new Audio(
-  "/Javascript games/tic tac toe sounds/mixkit-click-melodic-tone-1129.wav"
-);
+  clickO = new Audio("/Javascript games/tic tac toe sounds/click.mp3"),
+  clickX = new Audio(
+    "/Javascript games/tic tac toe sounds/mixkit-click-melodic-tone-1129.wav"
+  );
 let turnO = true;
 const winPatterns = [
   [0, 1, 2],
@@ -22,26 +22,23 @@ const winPatterns = [
 ];
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
-    for (let i of boxes) {
-      if (turnO) {
-        clickO.play();
-        console.log(i);
-        box.innerHTML = "O";
-        turnO = false;
-      } else {
-        clickX.play();
-        box.innerHTML = "X";
-        turnO = true;
-      }
-      box.disabled = true; //So that if whenever the value is changed from of ny button from the top👆🏻 thne it will be disabled and cant be changed again
-      checkWinner(); //on every click it will check all the winning patterns
+    if (turnO) {
+      clickO.play();
+      console.log(box);
+      box.innerHTML = "O";
+      turnO = false;
+    } else {
+      clickX.play();
+      box.innerHTML = "X";
+      turnO = true;
     }
+    box.disabled = true; //So that if whenever the value is changed from of ny button from the top👆🏻 thne it will be disabled and cant be changed again
+    checkWinner(); //on every click it will check all the winning patterns
   });
 });
 // ------------checking if the boxex ont he index on pattern is same X or O---------------
 const checkWinner = () => {
   for (let pattern of winPatterns) {
-    console.log(pattern[0], pattern[1], pattern[2]);
     //posvalue will be X or O⭐⭐⭐ and pattern will give box postiions like 2,5,8 and it will check if on 2 5 and 8 there is x or there is o ther wil be a winner
     let pos1value = boxes[pattern[0]].innerHTML,
       pos2value = boxes[pattern[1]].innerHTML,
@@ -50,18 +47,6 @@ const checkWinner = () => {
       if (pos1value === pos2value && pos2value === pos3value) {
         message(pos1value);
       }
-    } else if (count == 9) {
-      winning.play();
-      msgContainer.classList.remove("hidden");
-      document.querySelector(".overlay").classList.remove("hidden");
-      msg.innerHTML = `Its a tie between Mr.X and Mr.O`;
-      document.querySelector(".close-modal").addEventListener("click", close);
-      document.querySelector(".overlay").addEventListener("click", close);
-      document.addEventListener("keydown", (e) => {
-        if (e.key == "Escape") {
-          close();
-        }
-      });
     }
   }
 };
